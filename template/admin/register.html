@@ -1,0 +1,49 @@
+{% extends 'admin/headerfooter.html' %}
+    {% block content %}
+								<!--/login-->
+								
+									   <div class="error_page">
+												<!--/login-top-->
+												
+													<div class="error-top">
+													<h2 class="inner-tittle page">Augment</h2>
+													    <div class="login">
+														<h3 class="inner-tittle t-inner">Register</h3>
+																<form action="/admin_register/" method="post">
+																	{% csrf_token %}
+																		<input type="text" name="email" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}" >
+																		<input type="password" name="password" value="Password" id="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+																		<input type="password" name="confirmpassword" value="Password"id="ConfirmPassword"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+																		<div class="sign-up">
+																					<input type="reset" value="Reset">
+																					<input type="submit" onclick="myFunction()" value="Register" onclick="return Validate()">
+																			
+																		</div>
+																		<div class="clearfix"></div>
+																		
+																		<div class="new">
+																			<p><label class="checkbox11"><input type="checkbox" name="checkbox"><i> </i>I agree with the terms</label></p>
+																			<p class="sign">Already register ? <a href="login.html">Login</a></p>
+																			<div class="clearfix"></div>
+																		</div>
+																	</form>
+														</div>
+														
+													</div>
+													 </div>
+	      <script>
+        function Validate() {
+            var password = document.getElementById("Password").value;
+            var confirmPassword = document.getElementById("ConfirmPassword").value;
+            if (password != confirmPassword) {
+                alert("You first Passwords is not similar with 2nd password. Please enter same password in both");
+                return false;
+            }
+            return true;
+        }
+       </script>
+												<!--//login-top-->
+										  
+										  	<!--//login-->
+										    <!--footer section start-->
+										{% endblock %}
