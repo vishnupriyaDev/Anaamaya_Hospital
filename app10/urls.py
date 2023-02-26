@@ -29,5 +29,12 @@ urlpatterns = [
    path('admin_login/',views.admin_login, ),
    path('admin_register/',views.admin_register, ),
    path('admin_logout/',views.admin_logout),
+   path('admin_forms/',views.admin_forms),
+   path('admin_table/',views.admin_table),
+   path('admin_service_update/',views.admin_service_update),
+   path('admin_service_delete/',views.admin_service_delete),
+
+
+
 
 ]

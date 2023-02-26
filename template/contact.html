@@ -31,7 +31,8 @@
                     <div class="contact-form-wrapper">
                         <h3 class="contact-form-title"> Send Message </h3>
                         <div class="section-border"></div>
-                        <form action="#" class="custom-form contact--form">
+                        <form action="/contact/" method="post" class="custom-form contact--form">
+                            {% csrf_token %}
                             <div class="single-appoinment">
                                 <input class="form--control form-control" type="text" name="name" placeholder="Your Name">
                             </div>
@@ -39,7 +40,7 @@
                                 <input class="form--control form-control" type="text" name="email" placeholder="Email">
                             </div>
                             <div class="single-appoinment">
-                                <input class="form--control form-control" type="url" name="website" placeholder="Website">
+                                <input class="form--control form-control" type="text" name="phonenumber" placeholder="Phone Number">
                             </div>
                             <div class="single-appoinment">
                                 <textarea class="form--control form-control form--message" name="message" placeholder="Write Messages"></textarea>

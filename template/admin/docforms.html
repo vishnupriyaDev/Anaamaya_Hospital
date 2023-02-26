@@ -38,12 +38,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<h2 class="inner-tittle">Basic Form </h2>
 															<div class="graph-form">
 																	<div class="form-body">
-																		<form action="/admin_forms/" method= "POST">
+																		<form action="/admin_docforms/" method= "POST" enctype="multipart/form-data">
 																		{% csrf_token %} 
-																			<div class="form-group"> <label for="exampleInputEmail1">Department</label> <input type="text" name="department" class="form-control" id="exampleInputEmail1"> </div>
+																			<div class="form-group"> <label for="exampleInputEmail1">Doctor Name</label> <input type="text" name="name" class="form-control" id="exampleInputEmail1"> </div>
 
-																		 <div class="form-group"> <label for="exampleInputPassword1">Description</label> <input type="text" name="description" class="form-control" id="exampleInputPassword1"></div>
-																		  <!-- <div class="form-group"> <label for="exampleInputFile">File input</label> <input type="file" id="exampleInputFile"> <p class="help-block">Example block-level help text here.</p> </div> --> 
+                                                                            <div class="form-group"> <label for="exampleInputFile">File input</label> <input type="file" name="image" id="exampleInputFile"></div> 
+                                                                            
+                                                                            <div class="form-group"> <label for="exampleInputPassword1">Department</label> 
+                                                                            	<select> name="department" class="form-control" id="exampleInputPassword1">
+                                                                            <option value="">ENT</option>
+                                                                        </select>
+                                                                            </div>
+
+                                                                            <div class="form-group"> <label for="exampleInputPassword1">Qualification</label> <input type="text" name="qualification" class="form-control" id="exampleInputPassword1"></div>
 																		  <!-- <div class="checkbox"> <label> <input type="checkbox"> Check me out </label> 
 																		  </div>  -->
 																		  <button type="submit" class="btn btn-default">Submit</button> 

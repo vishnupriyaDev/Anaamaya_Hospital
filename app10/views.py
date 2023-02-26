@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse,HttpResponse
 from app10.models import *
+import os
+import random
+import string
+from django.conf import settings
+from django.core.mail import send_mail
+import datetime
 
 # Create your views here.
 def index(request):
@@ -16,7 +22,23 @@ def blog(request):
 	return render(request,'blog.html')
 
 def contact(request):
-	return render(request,'contact.html')
+	if request.method == "POST":
+		cname=request.POST['name']
+		cemail=request.POST['email']
+		cmessage=request.POST['message']
+		cphonenumber=request.POST['phonenumber']
+		add=contact_tb(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
+		add.save()
+		x = ''.join(random.choices(cname + string.digits, k=8))
+		y = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
+		subject = 'welcome to aanamaya hospital'
+		message = f'Hi {cname}, thank you for visiting aanamaya hospital . '
+		email_from = settings.EMAIL_HOST_USER 
+		recipient_list = [cemail, ] 
+		send_mail( subject, message, email_from, recipient_list )
+		return render(request,"contact.html")
+	else:
+	    return render(request,'contact.html')
 
 def doctor_details(request):
 	return render(request,'doctor_details.html')
@@ -104,3 +126,76 @@ def admin_logout(request):
 		del request.session['id']
 		del request.session['email']
 	return HttpResponseRedirect('/admin_login/')
+
+def admin_forms(request):
+	if request.method == "POST":
+		cdepartment=request.POST['department']
+		cdescription=request.POST['description']
+		check=service_tb.objects.filter(department=cdepartment)
+		if check:
+			return render(request,'admin/forms.html',{'error':'Already Data Saved'})
+		else:
+		    add=service_tb(department=cdepartment,description=cdescription)
+		    add.save()
+		    return render(request,'admin/index.html',{'success':"Successfully Data Saved"})
+	else:
+		return render(request,'admin/forms.html')
+
+def admin_table(request):
+	data=service_tb.objects.all()
+	return render(request,'admin/table.html',{'details':data})
+
+def admin_service_update(request):
+	if request.method == "POST":
+		cdepartment=request.POST['department']
+		cdescription=request.POST['description']
+		serviceid=request.GET['uid']
+		# imgval=request.POST['imgup']
+		# if imgval =="yes":
+
+		# 	cimage=request.FILES['image']
+		# 	oldrec=pro_tb.objects.filter(id=prdid)
+		# 	updrec=pro_tb.objects.get(id=prdid)
+		# 	for x in oldrec:
+		# 		imgurl=x.image.url
+		# 		pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
+		# 		if os.path.exists(pathtoimage):
+		# 			os.remove(pathtoimage)
+		# 			print('Successfully deleted')
+		# 	updrec.image=cimage
+		# 	updrec.save()
+
+		add=service_tb.objects.filter(id=serviceid).update(department=cdepartment,description=cdescription)
+		return HttpResponseRedirect('/admin_table/')
+	else:
+		serviceid=request.GET['uid']
+		data=service_tb.objects.filter(id=serviceid)
+		return render(request,'admin/service_update.html',{'details':data})
+
+def admin_service_delete(request):
+    serviceid=request.GET['uidd']
+    # oldrec=serviceid.objects.filter(id=serviceid)
+    # for x in oldrec:
+    # 	imgurl=x.image.url
+    # 	pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
+    # 	if os.path.exists(pathtoimage):
+    # 		os.remove(pathtoimage)
+    data=service_tb.objects.filter(id=serviceid).delete()
+    return HttpResponseRedirect('/admin_table/')
+
+def admin_docforms(request):
+	if request.method == "POST":
+		cdoctorname=request.POST['name']
+		cimage=request.FILES['image']
+		cdepartment=request.POST['department']
+		cqualification=request.POST['qualification']
+		check=doctor_tb.objects.filter(name=cdoctorname)
+		if check:
+			return render(request,'admin/docforms.html',{'error':'Already Data Saved'})
+		else:
+		    add=doctor_tb(name=cdoctorname,image=cimage,department=cdepartment,qualification=cqualification)
+		    add.save()
+		    return render(request,'admin/index.html',{'success':"Successfully Data Saved"})
+	else:
+	    return render(request,'admin/docforms.html')
+
