@@ -20,6 +20,9 @@ def blog_details(request):
 
 def blog(request):
 	return render(request,'blog.html')
+def contact(request):
+    return render(request,'contact.html')
+
 
 def admin_contacts(request):
 	if request.method == "POST":

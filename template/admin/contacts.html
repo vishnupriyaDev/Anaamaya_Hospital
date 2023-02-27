@@ -20,39 +20,59 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //lined-icons -->
 <script src="/static/backend/js/jquery-1.10.2.min.js"></script>
 <!--clock init-->
-</head>
-
-
-                        <div class="error-top">
-                        <h2 class="inner-tittle page">Augment</h2>
-                        <div class="login">
-                        <h3 class="inner-tittle t-inner"> Send Message </h3>
-                        <div class="section-border"></div>
-                        <form action="/admin_contacts/" method="post" class="custom-form contact--form">
-                            {% csrf_token %}
-                            <div class="single-appoinment">
-                                <input class="form--control form-control" type="text" name="name" placeholder="Your Name">
-                            </div>
-                            <div class="single-appoinment">
-                                <input class="form--control form-control" type="text" name="email" placeholder="Email">
-                            </div>
-                            <div class="single-appoinment">
-                                <input class="form--control form-control" type="text" name="phonenumber" placeholder="Phone Number">
-                            </div>
-                            <div class="single-appoinment">
-                                <textarea class="form--control form-control form--message" name="message" placeholder="Write Messages"></textarea>
-                            </div>
-                            <button type="submit"> SEND MESSAGES </button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="footer">
-                <div class="error-btn">
-                <a class="read fourth" href="index.html">Return to Home</a>
-                </div>
-                <p>&copy 2016 Augment . All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">W3layouts.</a></p>
-             </div>
+</head> 
+                                <!--/login-->
+                                
+                                       <div class="error_page">
+                                                <!--/login-top-->
+                                                
+                                                    <div class="error-top">
+                                                    <h2 class="inner-tittle page">Augment</h2>
+                                                        <div class="login">
+                                                            <h4 style="color:red; text-align: center;">{{error}}</h4>
+                                                            <h3 class="inner-tittle t-inner">Send Message</h3>
+                                                                <form action="/admin_contacts/" method="post">
+                                                                    {% csrf_token %}
+                                                                        <input type="text" name="name" class="text" placeholder="Your Name" >
+                                                                        <input type="text" name="email"  placeholder="Email" >
+                                                                        <input type="text" name="phonenumber" placeholder="Phone Number">
+                                                                        <input type="text" name="message" placeholder="Message">
+                                                                        <div class="sign-up">
+                                                                            <div class="submit"><input type="submit"  style="float: inherit;" value="SEND" ></div>
+                                                                                    <!-- <input type="reset" value="Reset"> -->
+                                                                                    
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                        
+                                                                        <div class="new">
+                                                                           <!--  <p><label class="checkbox11"><input type="checkbox" name="checkbox"><i> </i>I agree with the terms</label></p> -->
+                                                                            <!-- <p class="sign">Already register ? <a href="login.html">Login</a></p> -->
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
+                                                                    </form>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                     </div>
+                                                    </body>
+         
+                                                <!--//login-top-->
+                                                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                                          <script type="text/javascript">
+                                            $('#password, #confirm_password').on('keyup', function () {
+                                                if ($('#password').val() == $('#confirm_password').val()) {$('#confirm_password').css('border-color', 'green');} 
+                                                else $('#confirm_password').css('border-color', 'red');
+});
+                                          </script> -->
+                                          
+                                            <!--//login-->
+                                            <!--footer section start-->
+                                        <div class="footer">
+                                                <div class="error-btn">
+                                                            <a class="read fourth" href="index.html">Return to Home</a>
+                                                            </div>
+                                           <p>&copy 2016 Augment . All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">W3layouts.</a></p>
+                                        </div>
                                     <!--footer section end-->
                                     <!--/404-->
 <!--js -->
