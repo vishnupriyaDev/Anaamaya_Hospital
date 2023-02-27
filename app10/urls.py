@@ -7,7 +7,7 @@ urlpatterns = [
    path('about/',views.about),
    path('blog_details/',views.blog_details),
    path('blog/',views.blog),
-   path('contact/',views.contact),
+   # path('contact/',views.contact),
    path('doctor_details/',views.doctor_details),
    path('doctor/',views.doctor),
    path('faq/',views.faq),
@@ -33,6 +33,10 @@ urlpatterns = [
    path('admin_table/',views.admin_table),
    path('admin_service_update/',views.admin_service_update),
    path('admin_service_delete/',views.admin_service_delete),
+   path('admin_docforms/',views.admin_docforms),
+   path('admin_contacts/',views.admin_contacts),
+   path('admin_doctables/',views.admin_doctables),
+
 
 
 

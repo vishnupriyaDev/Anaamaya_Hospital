@@ -21,7 +21,7 @@ def blog_details(request):
 def blog(request):
 	return render(request,'blog.html')
 
-def contact(request):
+def admin_contacts(request):
 	if request.method == "POST":
 		cname=request.POST['name']
 		cemail=request.POST['email']
@@ -36,9 +36,9 @@ def contact(request):
 		email_from = settings.EMAIL_HOST_USER 
 		recipient_list = [cemail, ] 
 		send_mail( subject, message, email_from, recipient_list )
-		return render(request,"contact.html")
+		return render(request,"admin/index.html")
 	else:
-	    return render(request,'contact.html')
+	    return render(request,'admin/contacts.html')
 
 def doctor_details(request):
 	return render(request,'doctor_details.html')
@@ -184,18 +184,25 @@ def admin_service_delete(request):
     return HttpResponseRedirect('/admin_table/')
 
 def admin_docforms(request):
+	data=service_tb.objects.all()
 	if request.method == "POST":
-		cdoctorname=request.POST['name']
-		cimage=request.FILES['image']
-		cdepartment=request.POST['department']
-		cqualification=request.POST['qualification']
-		check=doctor_tb.objects.filter(name=cdoctorname)
-		if check:
-			return render(request,'admin/docforms.html',{'error':'Already Data Saved'})
-		else:
-		    add=doctor_tb(name=cdoctorname,image=cimage,department=cdepartment,qualification=cqualification)
-		    add.save()
-		    return render(request,'admin/index.html',{'success':"Successfully Data Saved"})
+	 	cdoctorname=request.POST['name']
+	 	cimage=request.FILES['image']
+	 	cdepartment=request.POST['department']
+	 	cdepartment=service_tb.objects.get(id=cdepartment)
+	 	cqualification=request.POST['qualification']
+	 	check=doctor_tb.objects.filter(doctorname=cdoctorname)
+	 	if check:
+	 		return render(request,'admin/docforms.html',{'error':'Already Data Saved','details':data})
+	 	else:
+	 		add=doctor_tb(doctorname=cdoctorname,image=cimage,department=cdepartment,qualification=cqualification)
+	 		add.save()
+	 		return render(request,'admin/index.html',{'success':"Successfully Data Saved"})
 	else:
-	    return render(request,'admin/docforms.html')
+	    return render(request,'admin/docforms.html' ,{'details':data})
+
+def admin_doctables(request):
+	data=doctor_tb.objects.all()
+	return render(request,'admin/doctables.html',{'details':data})
+
 
