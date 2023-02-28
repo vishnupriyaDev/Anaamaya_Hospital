@@ -208,4 +208,74 @@ def admin_doctables(request):
 	data=doctor_tb.objects.all()
 	return render(request,'admin/doctables.html',{'details':data})
 
+def admin_service_update(request):
+	if request.method == "POST":
+		cdescription=request.POST['description']
+		serviceid=request.GET['uid']
+		# imgval=request.POST['imgup']
+		# if imgval =="yes":
+
+		# 	cimage=request.FILES['image']
+		# 	oldrec=pro_tb.objects.filter(id=prdid)
+		# 	updrec=pro_tb.objects.get(id=prdid)
+		# 	for x in oldrec:
+		# 		imgurl=x.image.url
+		# 		pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
+		# 		if os.path.exists(pathtoimage):
+		# 			os.remove(pathtoimage)
+		# 			print('Successfully deleted')
+		# 	updrec.image=cimage
+		# 	updrec.save()
+
+		add=service_tb.objects.filter(id=serviceid).update(department=cdepartment,description=cdescription)
+		return HttpResponseRedirect('/admin_table/')
+	else:
+		serviceid=request.GET['uid']
+		data=service_tb.objects.filter(id=serviceid)
+		return render(request,'admin/service_update.html',{'details':data})
+
+def admin_docform_update(request):
+	data=service_tb.objects.all()
+	if request.method == "POST":
+		cdoctorname=request.POST['name']
+		
+		cdepartment=request.POST['department']
+		cdepartment=service_tb.objects.get(id=cdepartment )
+		cqualification=request.POST['qualification']
+		serviceid=request.GET['uid']
+		imgval=request.POST['imgup']
+		if imgval =="yes":
+			cimage=request.FILES['image']
+			oldrec=doctor_tb.objects.filter(id=serviceid)
+			updrec=doctor_tb.objects.get(id=serviceid)
+			for x in oldrec:
+				imgurl=x.image.url
+				pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
+				if os.path.exists(pathtoimage):
+					os.remove(pathtoimage)
+					print('Successfully deleted')
+			updrec.image=cimage
+			updrec.save()
+
+		add=doctor_tb.objects.filter(id=serviceid).update(doctorname=cdoctorname,department=cdepartment,qualification=cqualification)
+		return HttpResponseRedirect('/admin_doctables/')
+	else:
+		serviceid=request.GET['uid']
+		data=doctor_tb.objects.filter(id=serviceid)
+		return render(request,'admin/docform_update.html',{'details':data})
+		
+def admin_docform_delete(request):
+    serviceid=request.GET['uidd']
+    oldrec=doctor_tb.objects.filter(id=serviceid)
+    for x in oldrec:
+    	imgurl=x.image.url
+    	pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
+    	if os.path.exists(pathtoimage):
+    		os.remove(pathtoimage)
+    data=doctor_tb.objects.filter(id=serviceid).delete()
+    return HttpResponseRedirect('/admin_doctable/')
+
+
+
+
 

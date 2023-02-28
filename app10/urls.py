@@ -36,6 +36,9 @@ urlpatterns = [
    path('admin_docforms/',views.admin_docforms),
    path('admin_contacts/',views.admin_contacts),
    path('admin_doctables/',views.admin_doctables),
+   path('admin_docform_update/',views.admin_docform_update),
+   path('admin_docform_delete/',views.admin_docform_delete),
+
 
 
 
