@@ -27,18 +27,20 @@
     <section class="service-area pt-120 pb-120">
         <div class="container">
             <div class="row gy-4">
-                <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".2s">
-                    <div class="single-service">
+                {% for x in data %}
+              <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".2s">
+                     <div class="single-service">
                         <div class="service-icon">
                             <img src="/static/assets/img/home/service1.png" alt="">
                         </div>
                         <div class="service-contents">
-                            <h4 class="common-title"> <a href="service-details.html"> Cardiology </a> </h4>
-                            <p class="common-para"> Lorem ipsum dolor sit amenuodales massa turpis cursus iaculis urna nam. Ultricies sapien fusce </p>
+                            <h4 class="common-title"> <a href="#"> {{x.department}}</a> </h4>
+                            <p class="common-para"> {{x.description}} </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
+                {% endfor %}
+                <!-- <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
                     <div class="single-service">
                         <div class="service-icon">
                             <img src="/static/assets/img/home/service2.png" alt="">
@@ -48,8 +50,8 @@
                             <p class="common-para"> Lorem ipsum dolor sit amenuodales massa turpis cursus iaculis urna nam. Ultricies sapien fusce </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".3s">
+                </div> -->
+                <!-- <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".3s">
                     <div class="single-service">
                         <div class="service-icon">
                             <img src="/static/assets/img/home/service3.png" alt="">
@@ -59,8 +61,8 @@
                             <p class="common-para"> Lorem ipsum dolor sit amenuodales massa turpis cursus iaculis urna nam. Ultricies sapien fusce </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
+                </div> -->
+                <!-- <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
                     <div class="single-service">
                         <div class="service-icon">
                             <img src="/static/assets/img/home/service4.png" alt="">
@@ -70,8 +72,8 @@
                             <p class="common-para"> Lorem ipsum dolor sit amenuodales massa turpis cursus iaculis urna nam. Ultricies sapien fusce </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".3s">
+                </div> -->
+               <!--  <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".3s">
                     <div class="single-service">
                         <div class="service-icon">
                             <img src="/static/assets/img/home/service5.png" alt="">
@@ -81,8 +83,8 @@
                             <p class="common-para"> Lorem ipsum dolor sit amenuodales massa turpis cursus iaculis urna nam. Ultricies sapien fusce </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
+                </div> -->
+                <!-- <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
                     <div class="single-service">
                         <div class="service-icon">
                             <img src="/static/assets/img/home/service6.png" alt="">
@@ -92,7 +94,7 @@
                             <p class="common-para"> Lorem ipsum dolor sit amenuodales massa turpis cursus iaculis urna nam. Ultricies sapien fusce </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

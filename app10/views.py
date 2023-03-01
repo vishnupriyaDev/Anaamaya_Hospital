@@ -43,11 +43,12 @@ def admin_contacts(request):
 	else:
 	    return render(request,'admin/contacts.html')
 
-def doctor_details(request):
-	return render(request,'doctor_details.html')
+# def doctor_details(request):
+# 	return render(request,'doctor_details.html')
 
 def doctor(request):
-	return render(request,'doctor.html')
+	data=doctor_tb.objects.all()
+	return render(request,'doctor.html',{'data':data})
 
 def faq(request):
 	return render(request,'faq.html')
@@ -70,14 +71,15 @@ def refund_policy(request):
 def registration(request):
 	return render(request,'registration.html')
 
-def service_details(request):
-	return render(request,'service_details.html')
+# def service_details(request):
+# 	return render(request,'service_details.html')
 
-def service_two(request):
-	return render(request,'service_two.html')
+# def service_two(request):
+# 	return render(request,'service_two.html')
 
 def service(request):
-	return render(request,'service.html')
+	data=service_tb.objects.all()
+	return render(request,'service.html',{'data':data})
 
 def term_of_service(request):
 	return render(request,'term_of_service.html')

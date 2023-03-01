@@ -26,16 +26,19 @@
     =========================== -->
     <section class="doctors-area pt-120 pb-120">
         <div class="container">
+             
             <div class="row gy-4">
+                {% for x in data %}
+                
                 <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".2s">
                     <div class="single-doctors">
                         <div class="doctors-image">
-                            <img src="/static/assets/img/home/doctor1.jpg" alt="">
+                            <img src="{{x.image.url}}" width="148" height="127" alt="">
                         </div>
                         <div class="doctor-contents">
-                            <h4 class="common-title"> <a href="doctor-details.html"> Dr. Khaled Hossen </a> </h4>
-                            <span class="doctor-title"> Physical Medicine , MBBS </span>
-                            <p class="common-para"> pharetra ultricies aenean, sit metus integer arcu turpis dndimentum pellentesque world. </p>
+                            <h4 class="common-title"> <a href="#"> {{x.doctorname}}</a> </h4>
+                            <span class="doctor-title"> {{x.department.department}} </span>
+                            <p class="common-para"> {{x.qualification}} </p>
                             <ul class="doctor-socials">
                                 <li>
                                     <a href="javascript:void(0)"> <i class="lab la-linkedin-in"></i> </a>
@@ -48,9 +51,12 @@
                                 </li>
                             </ul>
                         </div>
+                         
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
+                {% endfor %}
+                
+               <!--  <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
                     <div class="single-doctors">
                         <div class="doctors-image">
                             <img src="/static/assets/img/home/doctor2.jpg" alt="">
@@ -72,8 +78,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".2s">
+                </div> -->
+                <!-- <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".2s">
                     <div class="single-doctors">
                         <div class="doctors-image">
                             <img src="/static/assets/img/home/doctor3.jpg" alt="">
@@ -95,8 +101,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
+                </div> -->
+               <!--  <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
                     <div class="single-doctors">
                         <div class="doctors-image">
                             <img src="/static/assets/img/home/doctor1.jpg" alt="">
@@ -118,8 +124,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".3s">
+                </div> -->
+                <!-- <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".3s">
                     <div class="single-doctors">
                         <div class="doctors-image">
                             <img src="/static/assets/img/home/doctor2.jpg" alt="">
@@ -141,8 +147,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
+                </div> -->
+                <!-- <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
                     <div class="single-doctors">
                         <div class="doctors-image">
                             <img src="/static/assets/img/home/doctor3.jpg" alt="">
@@ -164,7 +170,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
