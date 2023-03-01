@@ -36,9 +36,9 @@
                             <img src="{{x.image.url}}" width="148" height="127" alt="">
                         </div>
                         <div class="doctor-contents">
-                            <h4 class="common-title"> <a href="#"> {{x.doctorname}}</a> </h4>
-                            <span class="doctor-title"> {{x.department.department}} </span>
-                            <p class="common-para"> {{x.qualification}} </p>
+                            <h4 class="common-title"  class="btn btn-primary"  data-toggle="modal" data-target="#example"> <a href="#" class="text-uppercase"> {{x.doctorname}}</a> </h4>
+                            <span class="doctor-title" style="text-transform: uppercase;"> {{x.department.department}} </span>
+                            <p class="common-para" style="text-transform: uppercase;"> {{x.qualification}} </p>
                             <ul class="doctor-socials">
                                 <li>
                                     <a href="javascript:void(0)"> <i class="lab la-linkedin-in"></i> </a>
@@ -55,6 +55,65 @@
                     </div>
                 </div>
                 {% endfor %}
+                
+                <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      
+    <div class="modal-content">
+    <div class="modal-header">
+         <h5 class="modal-title"> Book Appoinment </h5>
+           
+      </div>
+      <div class="modal-body">
+    <div class="col-xxl-6 col-lg-5 mt-5 mt-lg-0">
+                    <div class="doctor-appoinment">
+                        <div class="appoinment-inner">
+                           
+                            <div class="appoinment-border"></div>
+                            <div class="appoinment-form">
+                                <form action="#" class="custom-form">
+                                   <!--  <div class="single-appoinment" style="width: 250% !important">
+                                        <select>
+                                            <option value="1">Select Depertment</option>
+                                            <option value="2">Select Depertment</option>
+                                            <option value="3">Select Depertment</option>
+                                            <option value="4">Select Depertment</option>
+                                            <option value="5">Select Depertment</option>
+                                        </select>
+                                    </div> -->
+                                    <!-- <div class="single-appoinment" style="width: 250% !important" >
+                                        <select>
+                                            <option value="1">Select Doctor</option>
+                                            <option value="2">Select Doctor</option>
+                                            <option value="3">Select Doctor</option>
+                                            <option value="4">Select Doctor</option>
+                                            <option value="5">Select Doctor</option>
+                                        </select>
+                                    </div> -->
+                                    <div class="single-appoinment" style="width: 250% !important">
+                                        <input class="form--control form-control" type="text" name="name" placeholder="Full Name">
+                                    </div>
+                                    <div class="single-appoinment" style="width: 250% !important">
+                                        <input class="form--control form-control" type="tel" name="phone" placeholder="Phone Number">
+                                    </div>
+                                    <div class="single-appoinment" style="width: 250% !important">
+                                        <input class="form--control form-control date-input" data-date-format="mm/dd/yyyy" placeholder="Appoinment Date">
+                                    </div>
+                                   
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         <button type="submit"  class="btn btn-primary"> BOOK YOUR APPOINMENT </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
                 
                <!--  <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
                     <div class="single-doctors">
