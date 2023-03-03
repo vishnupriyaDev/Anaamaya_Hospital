@@ -20,28 +20,21 @@ def blog_details(request):
 
 def blog(request):
 	return render(request,'blog.html')
+
 def contact(request):
-    return render(request,'contact.html')
-
-
-def admin_contacts(request):
 	if request.method == "POST":
 		cname=request.POST['name']
 		cemail=request.POST['email']
 		cmessage=request.POST['message']
 		cphonenumber=request.POST['phonenumber']
-		add=contact_tb(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
+		add=contact1_tb(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
 		add.save()
-		x = ''.join(random.choices(cname + string.digits, k=8))
-		y = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
-		subject = 'welcome to aanamaya hospital'
-		message = f'Hi {cname}, thank you for visiting aanamaya hospital . '
-		email_from = settings.EMAIL_HOST_USER 
-		recipient_list = [cemail, ] 
-		send_mail( subject, message, email_from, recipient_list )
-		return render(request,"admin/index.html")
+		return render(request,"index.html")
 	else:
-	    return render(request,'admin/contacts.html')
+		return render(request,'contact.html')
+
+
+
 
 # def doctor_details(request):
 # 	return render(request,'doctor_details.html')
@@ -93,6 +86,25 @@ def admin_index(request):
 		return render(request,'admin/index.html')
 	else:
 		return HttpResponseRedirect('/admin_login/')
+
+def admin_contacts(request):
+	if request.method == "POST":
+		cname=request.POST['name']
+		cemail=request.POST['email']
+		cmessage=request.POST['message']
+		cphonenumber=request.POST['phonenumber']
+		add=contact_tb(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
+		add.save()
+		x = ''.join(random.choices(cname + string.digits, k=8))
+		y = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
+		subject = 'welcome to aanamaya hospital'
+		message = f'Hi {cname}, thank you for visiting aanamaya hospital . '
+		email_from = settings.EMAIL_HOST_USER 
+		recipient_list = [cemail, ] 
+		send_mail( subject, message, email_from, recipient_list )
+		return render(request,"admin/index.html")
+	else:
+	    return render(request,'admin/contacts.html')
 	
 
 def admin_login(request):
@@ -209,6 +221,11 @@ def admin_docforms(request):
 def admin_doctables(request):
 	data=doctor_tb.objects.all()
 	return render(request,'admin/doctables.html',{'details':data})
+
+def admin_usertables(request):
+	data=contact1_tb.objects.all()
+	return render(request,'admin/usertables.html',{'details':data})
+
 
 def admin_service_update(request):
 	if request.method == "POST":
