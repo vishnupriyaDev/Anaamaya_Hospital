@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse,HttpResponse
 from app10.models import *
@@ -27,9 +28,20 @@ def contact(request):
 		cemail=request.POST['email']
 		cmessage=request.POST['message']
 		cphonenumber=request.POST['phonenumber']
-		add=contact1_tb(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
-		add.save()
-		return render(request,"index.html")
+		check=reg_tb.objects.filter(email=cemail)
+		if check:
+			return render(request,'index.html',{'error':'Already registered'})
+		else:
+			add=contact1_tb(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
+			add.save()
+			x = ''.join(random.choices(cname + string.digits, k=8))
+			y = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
+			subject = 'welcome to aanamaya hospital'
+			message = f'Hi {cname}, thank you for visiting aanamaya hospital . '
+			email_from = settings.EMAIL_HOST_USER 
+			recipient_list = [cemail, ] 
+			send_mail( subject, message, email_from, recipient_list )
+			return render(request,"index.html" ,{'success':"Successfully registered"})
 	else:
 		return render(request,'contact.html')
 
@@ -42,6 +54,24 @@ def contact(request):
 def doctor(request):
 	data=doctor_tb.objects.all()
 	return render(request,'doctor.html',{'data':data})
+
+def appoinment(request):
+	data=service_tb.objects.all()
+	if request.method == "POST":
+	 	cname=request.POST['name']
+	 	cemail=request.POST['email']
+	 	cphonenumber=request.POST['phone']
+	 	cdate=request.POST['date']
+	 	check=appoinment_tb.objects.filter(name=cname)
+	 	if check:
+	 		return render(request,'appoinment.html',{'error':'Already Data Saved','details':data})
+	 	else:
+	 		add=appoinment_tb(name=cname,email=cemail,phonenumber=cphonenumber,date=cdate)
+	 		add.save()
+	 		return render(request,'index.html',{'success':"Successfully Data Saved"})
+	else:
+		return render(request,'appoinment.html')
+
 
 def faq(request):
 	return render(request,'faq.html')
@@ -93,18 +123,22 @@ def admin_contacts(request):
 		cemail=request.POST['email']
 		cmessage=request.POST['message']
 		cphonenumber=request.POST['phonenumber']
-		add=contact_tb(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
-		add.save()
-		x = ''.join(random.choices(cname + string.digits, k=8))
-		y = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
-		subject = 'welcome to aanamaya hospital'
-		message = f'Hi {cname}, thank you for visiting aanamaya hospital . '
-		email_from = settings.EMAIL_HOST_USER 
-		recipient_list = [cemail, ] 
-		send_mail( subject, message, email_from, recipient_list )
-		return render(request,"admin/index.html")
+		check=reg_tb.objects.filter(email=cemail)
+		if check:
+			return render(request,'index.html',{'error':'Already registered'})
+		else:
+			add=contact_tb(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
+			add.save()
+			x = ''.join(random.choices(cname + string.digits, k=8))
+			y = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
+			subject = 'welcome to aanamaya hospital'
+			message = f'Hi {cname}, thank you for visiting aanamaya hospital . '
+			email_from = settings.EMAIL_HOST_USER 
+			recipient_list = [cemail, ] 
+			send_mail( subject, message, email_from, recipient_list )
+			return render(request,"admin/index.html",{'success':"Successfully registered"})
 	else:
-	    return render(request,'admin/contacts.html')
+		return render(request,'admin/contacts.html')
 	
 
 def admin_login(request):

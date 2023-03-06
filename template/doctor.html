@@ -71,7 +71,8 @@
                            
                             <div class="appoinment-border"></div>
                             <div class="appoinment-form">
-                                <form action="#" class="custom-form">
+                                <form action="/appoinment/" method="post" class="custom-form">
+                                    {% csrf_token %}
                                    <!--  <div class="single-appoinment" style="width: 250% !important">
                                         <select>
                                             <option value="1">Select Depertment</option>
@@ -94,13 +95,16 @@
                                         <input class="form--control form-control" type="text" name="name" placeholder="Full Name">
                                     </div>
                                     <div class="single-appoinment" style="width: 250% !important">
+                                        <input class="form--control form-control" type="text" name="email" placeholder="Email">
+                                    </div>
+                                    <div class="single-appoinment" style="width: 250% !important">
                                         <input class="form--control form-control" type="tel" name="phone" placeholder="Phone Number">
                                     </div>
                                     <div class="single-appoinment" style="width: 250% !important">
-                                        <input class="form--control form-control date-input" data-date-format="mm/dd/yyyy" placeholder="Appoinment Date">
+                                        <input class="form--control form-control date-input" name="date" data-date-format="yyyy-mm-dd" placeholder="Appoinment Date">
                                     </div>
                                    
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
@@ -109,7 +113,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
          <button type="submit"  class="btn btn-primary"> BOOK YOUR APPOINMENT </button>
-        
+        </form>
       </div>
     </div>
   </div>

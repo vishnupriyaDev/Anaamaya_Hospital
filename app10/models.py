@@ -27,4 +27,13 @@ class doctor_tb(models.Model):
 	image=models.ImageField(upload_to="imagefiles/")
 	department=models.ForeignKey(service_tb, on_delete=models.CASCADE)
 	qualification=models.CharField(max_length=225)
+
+class appoinment_tb(models.Model):
+	docid=models.ForeignKey(doctor_tb, on_delete=models.CASCADE)
+	depid=models.ForeignKey(service_tb, on_delete=models.CASCADE)
+	name=models.CharField(max_length=225)
+	email=models.CharField(max_length=225)
+	phonenumber=models.CharField(max_length=225)
+	date=models.DateField()
+	
 	
