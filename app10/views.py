@@ -56,12 +56,15 @@ def doctor(request):
 	return render(request,'doctor.html',{'data':data})
 
 def appoinment(request):
-	data=service_tb.objects.all()
+	data=doctor_tb.objects.all()
 	if request.method == "POST":
 	 	cname=request.POST['name']
 	 	cemail=request.POST['email']
 	 	cphonenumber=request.POST['phone']
 	 	cdate=request.POST['date']
+	 	cdepartment=service_tb.objects.get(id=cdepartment )
+	 	cdoctorname=doctor_tb.objects.get(id=doctname )
+	 	check=cart_tb.objects.filter(cdepartment=prdid,doctname=uidd)
 	 	check=appoinment_tb.objects.filter(name=cname)
 	 	if check:
 	 		return render(request,'appoinment.html',{'error':'Already Data Saved','details':data})
