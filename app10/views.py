@@ -56,24 +56,24 @@ def doctor(request):
 	return render(request,'doctor.html',{'data':data})
 
 def appoinment(request):
-	data=doctor_tb.objects.all()
+	appoinment=doctor_tb.objects.all()
 	if request.method == "POST":
-	 	cname=request.POST['name']
-	 	cemail=request.POST['email']
-	 	cphonenumber=request.POST['phone']
-	 	cdate=request.POST['date']
-	 	cdepartment=service_tb.objects.get(id=cdepartment )
-	 	cdoctorname=doctor_tb.objects.get(id=doctname )
-	 	check=cart_tb.objects.filter(cdepartment=prdid,doctname=uidd)
-	 	check=appoinment_tb.objects.filter(name=cname)
-	 	if check:
-	 		return render(request,'appoinment.html',{'error':'Already Data Saved','details':data})
-	 	else:
-	 		add=appoinment_tb(name=cname,email=cemail,phonenumber=cphonenumber,date=cdate)
+		did=request.GET['did']
+		cname=request.POST['name']
+		cemail=request.POST['email']
+		cphonenumber=request.POST['phone']
+		cdate=request.POST['date']
+		# cdoctorname=request.POST['doctorname']
+		did=doctor_tb.objects.get(id=did )
+		check=appoinment_tb.objects.filter(name=cname)
+		if check:
+			return render(request,'appoinment.html',{'error':'Already Data Saved','details':appoinment})
+		else:
+	 		add=appoinment_tb(name=cname,email=cemail,phonenumber=cphonenumber,date=cdate,docid=did)
 	 		add.save()
 	 		return render(request,'index.html',{'success':"Successfully Data Saved"})
 	else:
-		return render(request,'appoinment.html')
+		return render(request,'appoinment.html',{'details':appoinment})
 
 
 def faq(request):
@@ -198,6 +198,10 @@ def admin_forms(request):
 def admin_table(request):
 	data=service_tb.objects.all()
 	return render(request,'admin/table.html',{'details':data})
+
+def admin_appoinment_table(request):
+	data=appoinment_tb.objects.all()
+	return render(request,'admin/appoinment_table.html',{'details':data})
 
 def admin_service_update(request):
 	if request.method == "POST":

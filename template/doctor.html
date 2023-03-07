@@ -36,7 +36,7 @@
                             <img src="{{x.image.url}}" width="148" height="127" alt="">
                         </div>
                         <div class="doctor-contents">
-                            <h4 class="common-title"  class="btn btn-primary"  data-toggle="modal" data-target="#example"> <a href="#" class="text-uppercase"> {{x.doctorname}}</a> </h4>
+                            <h4 class="common-title"  class="btn btn-primary"  data-toggle="modal" data-target="#example{{forloop.counter}}"> <a href="#" class="text-uppercase"> {{x.doctorname}}</a> </h4>
                             <span class="doctor-title" style="text-transform: uppercase;"> {{x.department.department}} </span>
                             <p class="common-para" style="text-transform: uppercase;"> {{x.qualification}} </p>
                             <ul class="doctor-socials">
@@ -54,14 +54,14 @@
                          
                     </div>
                 </div>
-                {% endfor %}
+               
                 
-                <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="example{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       
     <div class="modal-content">
     <div class="modal-header">
-         <h5 class="modal-title"> Book Appoinment </h5>
+         <h5 class="modal-title"> Book Appoinment {{x.id}} </h5>
            
       </div>
       <div class="modal-body">
@@ -71,7 +71,7 @@
                            
                             <div class="appoinment-border"></div>
                             <div class="appoinment-form">
-                                <form action="/appoinment/" method="post" class="custom-form">
+                                <form action="/appoinment/?did={{x.id}}" method="post" class="custom-form">
                                     {% csrf_token %}
                                    <!--  <div class="single-appoinment" style="width: 250% !important">
                                         <select>
@@ -118,6 +118,8 @@
     </div>
   </div>
 </div>
+
+ {% endfor %}
                 
                <!--  <div class="col-lg-4 col-md-6 wow animated slideInUp" data-wow-delay=".3s">
                     <div class="single-doctors">

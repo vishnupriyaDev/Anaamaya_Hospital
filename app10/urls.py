@@ -38,6 +38,7 @@ urlpatterns = [
    path('admin_contacts/',views.admin_contacts),
    path('admin_doctables/',views.admin_doctables),
    path('admin_usertables/',views.admin_usertables),
+   path('admin_appoinment_table/',views.admin_appoinment_table),
    path('admin_docform_update/',views.admin_docform_update),
    path('admin_docform_delete/',views.admin_docform_delete),
 
