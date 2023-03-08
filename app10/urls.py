@@ -35,7 +35,7 @@ urlpatterns = [
    path('admin_service_update/',views.admin_service_update),
    path('admin_service_delete/',views.admin_service_delete),
    path('admin_docforms/',views.admin_docforms),
-   path('admin_contacts/',views.admin_contacts),
+   # path('admin_contacts/',views.admin_contacts),
    path('admin_doctables/',views.admin_doctables),
    path('admin_usertables/',views.admin_usertables),
    path('admin_appoinment_table/',views.admin_appoinment_table),

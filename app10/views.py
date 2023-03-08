@@ -28,7 +28,7 @@ def contact(request):
 		cemail=request.POST['email']
 		cmessage=request.POST['message']
 		cphonenumber=request.POST['phonenumber']
-		check=reg_tb.objects.filter(email=cemail)
+		check=contact1_tb.objects.filter(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
 		if check:
 			return render(request,'index.html',{'error':'Already registered'})
 		else:
@@ -36,11 +36,16 @@ def contact(request):
 			add.save()
 			x = ''.join(random.choices(cname + string.digits, k=8))
 			y = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
-			subject = 'welcome to aanamaya hospital'
-			message = f'Hi {cname}, thank you for visiting aanamaya hospital . '
+			subject = 'Welcome to Anaamaya Hospital'
+			message = f'Hi {cname}, Thank you for valueble feeback. '
 			email_from = settings.EMAIL_HOST_USER 
 			recipient_list = [cemail, ] 
 			send_mail( subject, message, email_from, recipient_list )
+			asubject = 'Contact form '
+			amessage = f' A message from  {cname}, message is {cmessage}, contact number is {cphonenumber} '
+			aemail_from = settings.EMAIL_HOST_USER 
+			arecipient_list = [settings.EMAIL_HOST_USER , ] 
+			send_mail( asubject, amessage, aemail_from, arecipient_list )
 			return render(request,"index.html" ,{'success':"Successfully registered"})
 	else:
 		return render(request,'contact.html')
@@ -65,15 +70,27 @@ def appoinment(request):
 		cdate=request.POST['date']
 		# cdoctorname=request.POST['doctorname']
 		did=doctor_tb.objects.get(id=did )
-		check=appoinment_tb.objects.filter(name=cname)
+		check=appoinment_tb.objects.filter(name=cname,email=cemail,phonenumber=cphonenumber,date=cdate,docid=did)
 		if check:
-			return render(request,'appoinment.html',{'error':'Already Data Saved','details':appoinment})
+			return render(request,'doctor.html',{'error':'Already Data Saved','details':appoinment})
 		else:
 	 		add=appoinment_tb(name=cname,email=cemail,phonenumber=cphonenumber,date=cdate,docid=did)
 	 		add.save()
-	 		return render(request,'index.html',{'success':"Successfully Data Saved"})
+	 		x = ''.join(random.choices(cname + string.digits, k=8))
+	 		y = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
+	 		subject = 'welcome to Anaamaya hospital Appoinment'
+	 		message = f'Hi {cname}, Thank you for visiting Anaamaya Hospital . '
+	 		email_from = settings.EMAIL_HOST_USER 
+	 		recipient_list = [cemail, ] 
+	 		send_mail( subject, message, email_from, recipient_list )
+	 		asubject = 'An appoinment has been registered'
+	 		amessage = f'A appoinment from  {cname}, date is {cdate}, contact number is {cphonenumber} '
+	 		aemail_from = settings.EMAIL_HOST_USER 
+	 		arecipient_list = [settings.EMAIL_HOST_USER, ] 
+	 		send_mail( asubject, amessage, aemail_from, arecipient_list )
+	 		return render(request,'index.html',{'success':"Successfully Data Saved" })
 	else:
-		return render(request,'appoinment.html',{'details':appoinment})
+		return render(request,'doctor.html',{'details':appoinment})
 
 
 def faq(request):
@@ -120,28 +137,28 @@ def admin_index(request):
 	else:
 		return HttpResponseRedirect('/admin_login/')
 
-def admin_contacts(request):
-	if request.method == "POST":
-		cname=request.POST['name']
-		cemail=request.POST['email']
-		cmessage=request.POST['message']
-		cphonenumber=request.POST['phonenumber']
-		check=reg_tb.objects.filter(email=cemail)
-		if check:
-			return render(request,'index.html',{'error':'Already registered'})
-		else:
-			add=contact_tb(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
-			add.save()
-			x = ''.join(random.choices(cname + string.digits, k=8))
-			y = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
-			subject = 'welcome to aanamaya hospital'
-			message = f'Hi {cname}, thank you for visiting aanamaya hospital . '
-			email_from = settings.EMAIL_HOST_USER 
-			recipient_list = [cemail, ] 
-			send_mail( subject, message, email_from, recipient_list )
-			return render(request,"admin/index.html",{'success':"Successfully registered"})
-	else:
-		return render(request,'admin/contacts.html')
+# def admin_contacts(request):
+# 	if request.method == "POST":
+# 		cname=request.POST['name']
+# 		cemail=request.POST['email']
+# 		cmessage=request.POST['message']
+# 		cphonenumber=request.POST['phonenumber']
+# 		check=contact_tb.objects.filter(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
+# 		if check:
+# 			return render(request,'index.html',{'error':'Already registered'})
+# 		else:
+# 			add=contact_tb(name=cname,email=cemail,phonenumber=cphonenumber,message=cmessage)
+# 			add.save()
+# 			x = ''.join(random.choices(cname + string.digits, k=8))
+# 			y = ''.join(random.choices(string.ascii_letters + string.digits, k=7))
+# 			subject = 'welcome to aanamaya hospital'
+# 			message = f'Hi {cname}, thank you for visiting aanamaya hospital . '
+# 			email_from = settings.EMAIL_HOST_USER 
+# 			recipient_list = [cemail, ] 
+# 			send_mail( subject, message, email_from, recipient_list )
+# 			return render(request,"admin/index.html",{'success':"Successfully registered"})
+# 	else:
+# 		return render(request,'admin/contacts.html')
 	
 
 def admin_login(request):
