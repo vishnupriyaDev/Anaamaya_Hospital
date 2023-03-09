@@ -11,7 +11,9 @@ import datetime
 
 # Create your views here.
 def index(request):
-	return render(request,'index.html')
+	data=service_tb.objects.all()
+	
+	return render(request,'index.html',{'data':data})
 
 def about(request):
 	return render(request,'about.html')
