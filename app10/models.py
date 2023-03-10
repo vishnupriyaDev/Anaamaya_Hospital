@@ -20,6 +20,7 @@ class reg_tb(models.Model):
 
 class service_tb(models.Model):
 	department=models.CharField(max_length=225)
+	image=models.ImageField(upload_to="service/")
 	description=models.TextField()
 
 class doctor_tb(models.Model):

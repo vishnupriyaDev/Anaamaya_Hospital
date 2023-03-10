@@ -124,20 +124,20 @@
             <div class="container">
             <div class="row gy-4">
             {% for x in data %}   
-            {% if forloop.counter <= 4 %}   
+            <!-- {% if forloop.counter <= 4 %}   --> 
                 <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".2s">   
                     <div class="single-service">
                         <div class="service-icon">
                             <img src="/static/assets/img/home/service1.png" alt="">
                         </div>
                         <div class="service-contents">
-                            <h4 class="common-title"> <a href="#"> {{x.department}} </a> </h4>
-                            <p class="common-para"> {{x.description}} </p>
+                            <h4 class="common-title" style="text-transform: uppercase;"> <a href="#">{{x.department.department}}</a> </h4>
+                            <p class="common-para" style="text-transform: uppercase;"> {{x.department.description}} </p>
                         </div>
                     </div>
                     
                 </div>
-                {% endif %}
+                <!-- {% endif %} -->
                 {% endfor %}  
                 
          </div>
@@ -202,11 +202,11 @@
  -->
             </div>
            <br>
-        <br>
-        <br>
+           <br>
+           <br>
         <form action="/service/" method="POST">
         {% csrf_token %}
-        <button type="submit"  class="btn btn-primary"> VIEW ALL </button>
+        <button type="submit"  class="btn btn-primary" style="border-radius: 8px;font-size: 24px;"> View All </button>
         </form>
         </div>
         
@@ -229,7 +229,7 @@
             </div>
              <div class="container">
              <div class="row gy-4">
-                {% for x in data %}
+             {% for x in data %}
                 <div class="col-lg-4 col-md-6 mt-4 wow slideInDown" data-wow-delay=".2s">
                     <div class="single-doctors">
                         <div class="doctors-image">
@@ -237,7 +237,7 @@
                         </div>
                         <div class="doctor-contents">
                             <h4 class="common-title"> <a href="doctor-details.html"> {{x.doctorname}}</a> </h4>
-                            <span class="doctor-title"> {{x.department.department}} </span>
+                            <span class="doctor-title" style="text-transform: uppercase";> {{x.department.department}} </span>
                             <p class="common-para"> {{x.qualification}} </p>
                             <!-- <ul class="doctor-socials">
                                 <li>
@@ -301,6 +301,13 @@
                     </div>
                 </div> -->
             </div>
+            <br>
+           <br>
+            <br>
+        <form action="/doctor/" method="POST">
+        {% csrf_token %}
+        <button type="submit"  class="btn btn-primary" style="border-radius: 8px; font-size: 24px;"> View All </button>
+        </form>
         </div>
     </section>
     <!-- =====>> Doctors Area End <<===== 

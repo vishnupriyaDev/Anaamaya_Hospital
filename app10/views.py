@@ -11,8 +11,7 @@ import datetime
 
 # Create your views here.
 def index(request):
-	data=service_tb.objects.all()
-	
+	data=doctor_tb.objects.all()[:4]
 	return render(request,'index.html',{'data':data})
 
 def about(request):
@@ -203,12 +202,13 @@ def admin_logout(request):
 def admin_forms(request):
 	if request.method == "POST":
 		cdepartment=request.POST['department']
+		cimage=request.FILES['image']
 		cdescription=request.POST['description']
 		check=service_tb.objects.filter(department=cdepartment)
 		if check:
 			return render(request,'admin/forms.html',{'error':'Already Data Saved'})
 		else:
-		    add=service_tb(department=cdepartment,description=cdescription)
+		    add=service_tb(department=cdepartment,image=cimage,description=cdescription)
 		    add.save()
 		    return render(request,'admin/index.html',{'success':"Successfully Data Saved"})
 	else:
@@ -227,20 +227,20 @@ def admin_service_update(request):
 		cdepartment=request.POST['department']
 		cdescription=request.POST['description']
 		serviceid=request.GET['uid']
-		# imgval=request.POST['imgup']
-		# if imgval =="yes":
+		imgval=request.POST['imgup']
+		if imgval =="yes":
 
-		# 	cimage=request.FILES['image']
-		# 	oldrec=pro_tb.objects.filter(id=prdid)
-		# 	updrec=pro_tb.objects.get(id=prdid)
-		# 	for x in oldrec:
-		# 		imgurl=x.image.url
-		# 		pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
-		# 		if os.path.exists(pathtoimage):
-		# 			os.remove(pathtoimage)
-		# 			print('Successfully deleted')
-		# 	updrec.image=cimage
-		# 	updrec.save()
+			cimage=request.FILES['image']
+			oldrec=service_tb.objects.filter(id=serviceid)
+			updrec=service_tb.objects.get(id=serviceid)
+			for x in oldrec:
+				imgurl=x.image.url
+				pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
+				if os.path.exists(pathtoimage):
+					os.remove(pathtoimage)
+					print('Successfully deleted')
+			updrec.image=cimage
+			updrec.save()
 
 		add=service_tb.objects.filter(id=serviceid).update(department=cdepartment,description=cdescription)
 		return HttpResponseRedirect('/admin_table/')
@@ -251,12 +251,12 @@ def admin_service_update(request):
 
 def admin_service_delete(request):
     serviceid=request.GET['uidd']
-    # oldrec=serviceid.objects.filter(id=serviceid)
-    # for x in oldrec:
-    # 	imgurl=x.image.url
-    # 	pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
-    # 	if os.path.exists(pathtoimage):
-    # 		os.remove(pathtoimage)
+    oldrec=serviceid.objects.filter(id=serviceid)
+    for x in oldrec:
+    	imgurl=x.image.url
+    	pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
+    	if os.path.exists(pathtoimage):
+    		os.remove(pathtoimage)
     data=service_tb.objects.filter(id=serviceid).delete()
     return HttpResponseRedirect('/admin_table/')
 
@@ -287,31 +287,31 @@ def admin_usertables(request):
 	return render(request,'admin/usertables.html',{'details':data})
 
 
-def admin_service_update(request):
-	if request.method == "POST":
-		cdescription=request.POST['description']
-		serviceid=request.GET['uid']
-		# imgval=request.POST['imgup']
-		# if imgval =="yes":
+# def admin_service_update(request):
+# 	if request.method == "POST":
+# 		cdescription=request.POST['description']
+# 		serviceid=request.GET['uid']
+# 		# imgval=request.POST['imgup']
+# 		# if imgval =="yes":
 
-		# 	cimage=request.FILES['image']
-		# 	oldrec=pro_tb.objects.filter(id=prdid)
-		# 	updrec=pro_tb.objects.get(id=prdid)
-		# 	for x in oldrec:
-		# 		imgurl=x.image.url
-		# 		pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
-		# 		if os.path.exists(pathtoimage):
-		# 			os.remove(pathtoimage)
-		# 			print('Successfully deleted')
-		# 	updrec.image=cimage
-		# 	updrec.save()
+# 		# 	cimage=request.FILES['image']
+# 		# 	oldrec=pro_tb.objects.filter(id=prdid)
+# 		# 	updrec=pro_tb.objects.get(id=prdid)
+# 		# 	for x in oldrec:
+# 		# 		imgurl=x.image.url
+# 		# 		pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
+# 		# 		if os.path.exists(pathtoimage):
+# 		# 			os.remove(pathtoimage)
+# 		# 			print('Successfully deleted')
+# 		# 	updrec.image=cimage
+# 		# 	updrec.save()
 
-		add=service_tb.objects.filter(id=serviceid).update(department=cdepartment,description=cdescription)
-		return HttpResponseRedirect('/admin_table/')
-	else:
-		serviceid=request.GET['uid']
-		data=service_tb.objects.filter(id=serviceid)
-		return render(request,'admin/service_update.html',{'details':data})
+# 		add=service_tb.objects.filter(id=serviceid).update(department=cdepartment,description=cdescription)
+# 		return HttpResponseRedirect('/admin_table/')
+# 	else:
+# 		serviceid=request.GET['uid']
+# 		data=service_tb.objects.filter(id=serviceid)
+# 		return render(request,'admin/service_update.html',{'details':data})
 
 def admin_docform_update(request):
 	data=service_tb.objects.all()

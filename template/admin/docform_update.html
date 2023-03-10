@@ -310,9 +310,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							     </div>
 
                                                           <div class="form-group"> <label for="exampleInputEmail1">Department</label>
-                                                                            <select name="department" class="form-control" style="height: 47px !important" id="exampleInputPassword1" >
+                                                                            <select name="department" class="form-control"style="height: 47px !important"  id="exampleInputPassword1" >
                                	                                           <option value="{{x.department.id}}"selected="">{{x.department.department}}</option>
-                               	                                          {% for x in details %}
+                               	                                             {% for x in details %}
                                                                             <option value="{{x.id}}">{{x.department}}</option>
                                                                             {% endfor %}
                                                                             </select>
