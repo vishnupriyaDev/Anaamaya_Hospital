@@ -11,7 +11,7 @@
                 <h2 class="banner-title"> Meet With Your Best Doctor In Here </h2>
                 <span class="banner-para"> Ridiculus elit amet sagittis arcu cras ornare, amet a amet urna, vitae cras. Ipsum sociosqu.  </span>
                 <div class="banner-button mt-0 mt-lg-3">
-                    <a href="javascript:void(0)" class="btn--custom btn--base btn--capsole"> APPOINMENT </a>
+                    <a href="/doctor/" class="btn--custom btn--base btn--capsole"> APPOINMENT </a>
                     <a href="javascript:void(0)" class="btn--custom btn-outline--base btn--capsole"> LEARN MORE </a>
                 </div>
             </div>
@@ -128,7 +128,8 @@
                 <div class="col-lg-4 col-md-6 wow animated slideInDown" data-wow-delay=".2s">   
                     <div class="single-service">
                         <div class="service-icon">
-                            <img src="/static/assets/img/home/service1.png" alt="">
+                            <img src="{{x.department.image.url}}" alt="">
+
                         </div>
                         <div class="service-contents">
                             <h4 class="common-title" style="text-transform: uppercase;"> <a href="#">{{x.department.department}}</a> </h4>
@@ -322,41 +323,41 @@
             </div>
             <div class="depertment-tab-list">
                 <ul class="tabs depertment-tabs">
-                    <li data-tab="tab-one">
+                    <li>
                         <div class="depertmet-icon">
                             <img src="/static/assets/img/home/depertment1.png" alt="">
                         </div>
                         <h5 class="depertment-title">Dental</h5>
 
                     </li>
-                    <li data-tab="tab-two" class="active">
+                    <li>
                         <div class="depertmet-icon">
                             <img src="/static/assets/img/home/depertment2.png" alt="">
                         </div>
                         <h5 class="depertment-title">Surgery</h5>
 
                     </li>
-                    <li data-tab="tab-three">
+                    <li>
                         <div class="depertmet-icon">
                             <img src="/static/assets/img/home/depertment3.png" alt="">
                         </div>
                         <h5 class="depertment-title">Gynecology</h5>
 
                     </li>
-                    <li data-tab="tab-four">
+                    <li>
                         <div class="depertmet-icon">
                             <img src="/static/assets/img/home/depertment4.png" alt="">
                         </div>
                         <h5 class="depertment-title">Laboratory</h5>
 
                     </li>
-                    <li data-tab="tab-five">
+                    <li>
                         <div class="depertmet-icon">
                             <img src="/static/assets/img/home/depertment5.png" alt="">
                         </div>
                         <h5 class="depertment-title">Cardiology</h5>
                     </li>
-                    <li data-tab="tab-six">
+                    <li>
                         <div class="depertmet-icon">
                             <img src="/static/assets/img/home/depertment6.png" alt="">
                         </div>
@@ -365,7 +366,7 @@
                     </li>
                 </ul>
             </div>
-            <div id="tab-one" class="tab-content">
+            <!-- <div  id="tab-one" class="tab-content">
                 <div class="row mt-3 mt-lg-4 align-items-center">
                     <div class="col-lg-6 mt-4">
                         <div class="depertment-images">
@@ -385,8 +386,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="tab-two" class="tab-content active">
+            </div> -->
+
+              
+            
+           <!--  <div id="tab-three" class="tab-content">
                 <div class="row mt-3 mt-lg-4 align-items-center">
                     <div class="col-lg-6 mt-4">
                         <div class="depertment-images">
@@ -406,8 +410,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="tab-three" class="tab-content">
+            </div> -->
+            <!-- <div id="tab-four" class="tab-content">
                 <div class="row mt-3 mt-lg-4 align-items-center">
                     <div class="col-lg-6 mt-4">
                         <div class="depertment-images">
@@ -427,8 +431,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="tab-four" class="tab-content">
+            </div> -->
+            <!-- <div id="tab-five" class="tab-content">
                 <div class="row mt-3 mt-lg-4 align-items-center">
                     <div class="col-lg-6 mt-4">
                         <div class="depertment-images">
@@ -448,8 +452,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="tab-five" class="tab-content">
+            </div> -->
+            <!-- <div id="tab-six" class="tab-content">
                 <div class="row mt-3 mt-lg-4 align-items-center">
                     <div class="col-lg-6 mt-4">
                         <div class="depertment-images">
@@ -469,14 +473,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="tab-six" class="tab-content">
-                <div class="row mt-3 mt-lg-4 align-items-center">
+            </div> -->
+              <div class="row mt-3 mt-lg-4 align-items-center">
                     <div class="col-lg-6 mt-4">
                         <div class="depertment-images">
                             <img src="/static/assets/img/home/depertment-left.jpg" alt="">
                         </div>
                     </div>
+                    
                     <div class="col-lg-6 mt-4">
                         <div class="depertment-contents">
                             <h3 class="depertment-headings">Open Heart Surgery</h3>
@@ -489,8 +493,8 @@
                             </ul>
                         </div>
                     </div>
+                    </
                 </div>
-            </div>
         </div>
     </section>
     <!-- =====>> Depertment Area End <<===== 
@@ -505,7 +509,7 @@
                     <p class="check-para text-white"> You can get upto 30% off for 45 days in here ! So Contact with Us </p>
                 </div>
                 <div class="check-button mt-lg-0 mt-4">
-                    <a href="service.html" class="btn--custom btn--white btn--capsole"> Get Services </a>
+                    <a href="/service/" class="btn--custom btn--white btn--capsole"> Get Services </a>
                 </div>
             </div>
         </div>
@@ -582,7 +586,7 @@
     =========================== -->
     <!-- =====>> Theatre Area Starts <<===== 
     =========================== -->
-    <section class="theatre-area bg--section pt-120 pb-120">
+   <!--  <section class="theatre-area bg--section pt-120 pb-120">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 wow fadeInLeft" data-wow-delay=".2s">
@@ -606,12 +610,12 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- =====>> Theatre Area End <<===== 
     =========================== -->
     <!-- =====>> Pricing Area Starts <<===== 
     =========================== -->
-    <section class="pricing-area pt-120 pb-120">
+   <!--  <section class="pricing-area pt-120 pb-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -670,7 +674,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- =====>> Pricing Area End <<===== 
     =========================== -->
     <!-- =====>> Counter Area Starts <<===== 
@@ -721,7 +725,7 @@
     =========================== -->
     <!-- =====>> BLog Area Starts <<===== 
     =========================== -->
-    <section class="blog-area pt-120 pb-120">
+    <!-- <section class="blog-area pt-120 pb-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -792,12 +796,12 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- =====>> BLog Area End <<===== 
     =========================== -->
     <!-- =====>> Brands Area Starts <<===== 
     =========================== -->
-    <div class="brands-area">
+   <!--  <div class="brands-area">
         <div class="container">
             <div class="brands-wrapper">
                 <div class="brands-slider">
@@ -822,7 +826,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     {% endblock %}
 
     <!-- =====>> Brands Area End <<===== 

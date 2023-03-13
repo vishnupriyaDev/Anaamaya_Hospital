@@ -1739,7 +1739,7 @@ a:hover {
 }
 
 .doctor-appoinment-area .doctor-faq-wrapper {
-  max-width: 585px;
+  
   margin-left: 60px;
 }
 
@@ -1850,7 +1850,7 @@ a:hover {
 
 .faq-contents .faq-panel {
   display: none;
-  max-width: 525px;
+ 
 }
 
 .faq-contents .faq-panel .single-panel {
