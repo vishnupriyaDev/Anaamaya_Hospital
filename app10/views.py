@@ -89,7 +89,8 @@ def appoinment(request):
 	 		aemail_from = settings.EMAIL_HOST_USER 
 	 		arecipient_list = [settings.EMAIL_HOST_USER, ] 
 	 		send_mail( asubject, amessage, aemail_from, arecipient_list )
-	 		return render(request,'index.html',{'success':"Successfully Data Saved" })
+	 		data=doctor_tb.objects.all()[:4]
+	 		return render(request,'index.html',{'success':"Successfully Data Saved",'data':data })
 	else:
 		return render(request,'doctor.html',{'details':appoinment})
 
@@ -251,7 +252,7 @@ def admin_service_update(request):
 
 def admin_service_delete(request):
     serviceid=request.GET['uidd']
-    oldrec=serviceid.objects.filter(id=serviceid)
+    oldrec=service_tb.objects.filter(id=serviceid)
     for x in oldrec:
     	imgurl=x.image.url
     	pathtoimage=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+imgurl
