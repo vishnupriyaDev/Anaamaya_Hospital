@@ -33,9 +33,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<h3 class="inner-tittle t-inner">Register</h3>
 																<form action="/admin_register/" method="post">
 																	{% csrf_token %}
-																		<input type="text" name="email" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}" >
-																		<input type="password" name="password"  id="password" >
-																		<input type="password" name="confirmpassword" value="Password" id="confirm_password">
+																		<input type="text" name="email" class="text" value="E-mail address" pattern="[^ @]*@[^ @]*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}" >
+																		<input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  id="password" >
+																		<input type="password" name="confirmpassword"  id="confirm_password">
 																		<div class="sign-up">
 																					<input type="reset" value="Reset">
 																					<input type="submit" onclick="myFunction()" value="Register" >
@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="error-btn">
 															<a class="read fourth" href="index.html">Return to Home</a>
 															</div>
-										   <p>&copy 2016 Augment . All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">W3layouts.</a></p>
+										   
 										</div>
 									<!--footer section end-->
 									<!--/404-->

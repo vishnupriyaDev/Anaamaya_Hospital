@@ -36,9 +36,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																<form action="#" method="post">
 																	{% csrf_token %}
 																		<input type="text" class="text" value="E-mail address" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}" >
-																		<input type="password" value="Password" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+																		<input type="password" value="Password" name="password"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 																		<div class="submit"><input type="submit" onclick="myFunction()" value="Login" ></div>
 																		<div class="clearfix"></div>
+																		<script type="text/javascript">
+																			{ % if msg %}
+																			alert("Sucessfully logined")
+																			{% end if %}
+																			{% if error %}
+																			alert("Invalid Details")
+																			{% end if %}
+																		</script>
 																		
 																		<div class="new">
 																			
@@ -60,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="error-btn">
 															<a class="read fourth" href="/admin_index/">Return to Home</a>
 															</div>
-										   <p>&copy 2016 Augment . All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">W3layouts.</a></p>
+										   
 										</div>
 									<!--footer section end-->
 									<!--/404-->

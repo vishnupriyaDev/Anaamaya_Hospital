@@ -1,60 +1,5 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Augment an Admin Panel Category Flat Bootstrap Responsive Web Template | Home :: w3layouts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Augment Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
- <!-- Bootstrap Core CSS -->
-<link href="/static/backend/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-<!-- Custom CSS -->
-<link href="/static/backend/css/style.css" rel='stylesheet' type='text/css' />
-<!-- Graph CSS -->
-<link href="/static/backend/css/font-awesome.css" rel="stylesheet"> 
-<!-- jQuery -->
-<link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
-<!-- lined-icons -->
-<link rel="stylesheet" href="/static/backend/css/icon-font.min.css" type='text/css' />
-<!-- //lined-icons -->
-<script src="/static/backend/js/jquery-1.10.2.min.js"></script>
-<script src="/static/backend/js/amcharts.js"></script>	
-<script src="/static/backend/js/serial.js"></script>	
-<script src="/static/backend/js/light.js"></script>	
-<script src="/static/backend/js/radar.js"></script>	
-<link href="/static/backend/css/barChart.css" rel='stylesheet' type='text/css' />
-<link href="/static/backend/css/fabochart.css" rel='stylesheet' type='text/css' />
-<!--clock init-->
-<script src="/static/backend/js/css3clock.js"></script>
-<!--Easy Pie Chart-->
-<!--skycons-icons-->
-<script src="/static/backend/js/skycons.js"></script>
-
-<script src="/static/backend/js/jquery.easydropdown.js"></script>
-
-<!--//skycons-icons-->
-</head> 
-<body>
-   <!--/content-inner-->
-	<div class="left-content" style="float:none;width:100% !important">
-	
-		<!-- header-starts -->
-			<div class="header-section">
-						<!--menu-right-->
-						<div class="top_menu">
-						       							   		
-							<div class="clearfix"></div>	
-								</ul>
-							</div>
-							<div class="clearfix"></div>	
-							<!--//profile_details-->
-						</div>
-						<!--//menu-right-->
-					<div class="clearfix"></div>
-				</div> 
-
-						<!-- //header-ends -->
+{% extends 'admin/headerfooter.html' %}
+    {% block content %} 
 							<!--//outer-wp-->
 								<div class="outter-wp">
 											<!--/sub-heard-part-->
@@ -67,7 +12,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<!--/sub-heard-part-->	
 												<!--/forms-->
 													<div class="forms-main">
+
 														<h2 class="inner-tittle">Basic Form </h2>
+														<h4 style="color:red; text-align: center;">{{error}}</h4>
 															<div class="graph-form">
 																	<div class="form-body">
 																		<form action="/admin_forms/" method= "POST" enctype="multipart/form-data">
@@ -97,18 +44,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 	</div>
 			
-	<footer>
-		<p>&copy 2016 Augment . All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">W3layouts.</a></p>
-	 </footer>	
-<!--js -->
-<link rel="stylesheet" href="/static/backend/css/vroom.css">
-<script type="text/javascript" src="/static/backend/js/vroom.js"></script>
-<script type="text/javascript" src="/static/backend/js/TweenLite.min.js"></script>
-<script type="text/javascript" src="/static/backend/js/CSSPlugin.min.js"></script>
-<script src="/static/backend/js/jquery.nicescroll.js"></script>
-<script src="/static/backend/js/scripts.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-   <script src="/static/backend/js/bootstrap.min.js"></script>
-</body>
-</html>
+	 {% endblock %}

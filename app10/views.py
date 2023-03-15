@@ -201,27 +201,38 @@ def admin_logout(request):
 	return HttpResponseRedirect('/admin_login/')
 
 def admin_forms(request):
-	if request.method == "POST":
-		cdepartment=request.POST['department']
-		cimage=request.FILES['image']
-		cdescription=request.POST['description']
-		check=service_tb.objects.filter(department=cdepartment)
-		if check:
-			return render(request,'admin/forms.html',{'error':'Already Data Saved'})
+	if request.session.has_key("id"):
+		if request.method == "POST":
+			cdepartment=request.POST['department']
+			cimage=request.FILES['image']
+			cdescription=request.POST['description']
+			check=service_tb.objects.filter(department=cdepartment)
+			if check:
+				return render(request,'admin/forms.html',{'error':'Already Data Saved'})
+			else:
+				add=service_tb(department=cdepartment,image=cimage,description=cdescription)
+				add.save()
+				return render(request,'admin/index.html',{'success':"Successfully Data Saved"})
 		else:
-		    add=service_tb(department=cdepartment,image=cimage,description=cdescription)
-		    add.save()
-		    return render(request,'admin/index.html',{'success':"Successfully Data Saved"})
+			return render(request,'admin/forms.html')
 	else:
-		return render(request,'admin/forms.html')
+		return HttpResponseRedirect('/admin_login/')
+
 
 def admin_table(request):
-	data=service_tb.objects.all()
-	return render(request,'admin/table.html',{'details':data})
+	if request.session.has_key("id"):
+		data=service_tb.objects.all()
+		return render(request,'admin/table.html',{'details':data})
+	else:
+		return HttpResponseRedirect('/admin_login/')
+
 
 def admin_appoinment_table(request):
-	data=appoinment_tb.objects.all()
-	return render(request,'admin/appoinment_table.html',{'details':data})
+	if request.session.has_key("id"):
+		data=appoinment_tb.objects.all()
+		return render(request,'admin/appoinment_table.html',{'details':data})
+	else:
+		return HttpResponseRedirect('/admin_login/')
 
 def admin_service_update(request):
 	if request.method == "POST":
@@ -262,30 +273,42 @@ def admin_service_delete(request):
     return HttpResponseRedirect('/admin_table/')
 
 def admin_docforms(request):
-	data=service_tb.objects.all()
-	if request.method == "POST":
-	 	cdoctorname=request.POST['name']
-	 	cimage=request.FILES['image']
-	 	cdepartment=request.POST['department']
-	 	cdepartment=service_tb.objects.get(id=cdepartment)
-	 	cqualification=request.POST['qualification']
-	 	check=doctor_tb.objects.filter(doctorname=cdoctorname)
-	 	if check:
-	 		return render(request,'admin/docforms.html',{'error':'Already Data Saved','details':data})
-	 	else:
-	 		add=doctor_tb(doctorname=cdoctorname,image=cimage,department=cdepartment,qualification=cqualification)
-	 		add.save()
-	 		return render(request,'admin/index.html',{'success':"Successfully Data Saved"})
+	if request.session.has_key("id"):
+		data=service_tb.objects.all()
+		if request.method == "POST":
+			cdoctorname=request.POST['name']
+			cimage=request.FILES['image']
+			cdepartment=request.POST['department']
+			cdepartment=service_tb.objects.get(id=cdepartment)
+			cqualification=request.POST['qualification']
+			check=doctor_tb.objects.filter(doctorname=cdoctorname)
+			if check:
+				return render(request,'admin/docforms.html',{'error':'Already Data Saved','details':data})
+			else:
+				add=doctor_tb(doctorname=cdoctorname,image=cimage,department=cdepartment,qualification=cqualification)
+				add.save()
+				return render(request,'admin/index.html',{'success':"Successfully Data Saved"})
+		else:
+			return render(request,'admin/docforms.html' ,{'details':data})
 	else:
-	    return render(request,'admin/docforms.html' ,{'details':data})
+		return HttpResponseRedirect('/admin_login/')
+
 
 def admin_doctables(request):
-	data=doctor_tb.objects.all()
-	return render(request,'admin/doctables.html',{'details':data})
+	if request.session.has_key("id"):
+		data=doctor_tb.objects.all()
+		return render(request,'admin/doctables.html',{'details':data})
+	else:
+		return HttpResponseRedirect('/admin_login/')
+
 
 def admin_usertables(request):
-	data=contact1_tb.objects.all()
-	return render(request,'admin/usertables.html',{'details':data})
+	if request.session.has_key("id"):
+		data=contact1_tb.objects.all()
+		return render(request,'admin/usertables.html',{'details':data})
+	else:
+		return HttpResponseRedirect('/admin_login/')
+
 
 
 # def admin_service_update(request):
