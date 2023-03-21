@@ -47,7 +47,7 @@ def contact(request):
 			aemail_from = settings.EMAIL_HOST_USER 
 			arecipient_list = [settings.EMAIL_HOST_USER , ] 
 			send_mail( asubject, amessage, aemail_from, arecipient_list )
-			return render(request,"index.html" ,{'success':"Successfully registered"})
+			return render(request,"index.html" ,{'success':"Thank You For Submitting"})
 	else:
 		return render(request,'contact.html')
 
@@ -90,7 +90,7 @@ def appoinment(request):
 	 		arecipient_list = [settings.EMAIL_HOST_USER, ] 
 	 		send_mail( asubject, amessage, aemail_from, arecipient_list )
 	 		data=doctor_tb.objects.all()[:4]
-	 		return render(request,'index.html',{'success':"Successfully Data Saved",'data':data })
+	 		return render(request,'index.html',{'success':"Successfully Booked",'data':data })
 	else:
 		return render(request,'doctor.html',{'details':appoinment})
 
@@ -167,14 +167,14 @@ def admin_login(request):
 	if request.method == "POST":
 		cemail=request.POST['email']
 		cpassword=request.POST['password']
-		check=reg_tb.objects.filter(email=cemail)
+		check=reg_tb.objects.filter(email=cemail,password=cpassword)
 		if check:
 			for x in check:
 				request.session['id']=x.id
 				request.session['email']=x.email
 			return render(request,'admin/index.html',{'success':"Successfully logined"})
 		else:
-		    return render(request,'admin/login.html',{'error':'invalid details '})
+		    return render(request,'admin/login.html',{'error':"Creditionals invalid"})
 	else:
 		return render(request,'admin/login.html')
 	
@@ -190,7 +190,7 @@ def admin_register(request):
 		else:
 		    add=reg_tb(email=cemail,password=cpassword,confirmpassword=cconfirmpassword)
 		    add.save()
-		    return render(request,'admin/register.html',{'success':"Successfully registered"})
+		    return render(request,'admin/index.html',{'success':"Successfully registered"})
 	else:
 	    return render(request,'admin/register.html')
 	
@@ -376,7 +376,7 @@ def admin_docform_delete(request):
     	if os.path.exists(pathtoimage):
     		os.remove(pathtoimage)
     data=doctor_tb.objects.filter(id=serviceid).delete()
-    return HttpResponseRedirect('/admin_doctable/')
+    return HttpResponseRedirect('/admin_doctables/')
 
 
 

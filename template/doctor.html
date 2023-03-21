@@ -76,6 +76,14 @@
                                     <div class="single-appoinment" style="width: 250% !important">
                                         <input class="form--control form-control date-input" name="date" data-date-format="yyyy-mm-dd" placeholder="Appoinment Date">
                                     </div>
+                                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                                 <script type="text/javascript">
+                                 {% if success %}
+                                 swal("{{success}}", "","success");
+                                 {% elif error %}
+                                 swal("{{error}}","", "error");
+                                 {% endif %}
+                                 </script> 
                                    
                                 
                             </div>
@@ -99,6 +107,22 @@
     </section>
     <!-- =====>> Doctors Area End <<===== 
     =========================== -->
+    <script>
+$(document).ready(function(){
+ 
+   
+    $("#doctor1").addClass("cactive");
+  });
+
+</script>
+<script>
+$(document).ready(function(){
+ 
+   
+    $("#doctor").addClass("active");
+  });
+
+</script>
      
    
     {% endblock %}

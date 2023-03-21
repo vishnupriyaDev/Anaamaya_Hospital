@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Augment an Admin Panel Category Flat Bootstrap Responsive Web Template | Login :: w3layouts</title>
+<link rel=icon href="/static/assets/img/home/profile_image.png" sizes="32x32">
+<title>Anaamaya Hospital Admin Panel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Augment Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -19,6 +20,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="/static/backend/css/icon-font.min.css" type='text/css' />
 <!-- //lined-icons -->
 <script src="/static/backend/js/jquery-1.10.2.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <!--clock init-->
 </head> 
 <body>
@@ -28,31 +31,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<!--/login-top-->
 												
 													<div class="error-top">
-													<h2 class="inner-tittle page">Augment</h2>
+													<h2 class="inner-tittle page"></h2>
 													    <div class="login">
-													    	<h4 style="color:red; text-align: center;">{{error}}</h4>
+													    	<!-- <h4 style="color:red; text-align: center;">{{error}}</h4> -->
 														<h3 class="inner-tittle t-inner">Login</h3>
 																
-																<form action="#" method="post">
+																<form action="/admin_login/" method="post">
 																	{% csrf_token %}
 																		<input type="text" class="text" value="E-mail address" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}" >
 																		<input type="password" value="Password" name="password"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-																		<div class="submit"><input type="submit" onclick="myFunction()" value="Login" ></div>
+																		<div class="submit"><input type="submit"   value="Login" >
+																			<script type="text/javascript">
+  {% if success %}
+  swal("{{success}}", "","success");
+  {% elif error %}
+  swal("{{error}}","", "error");
+  {% endif %}
+</script>
+																		</div>
 																		<div class="clearfix"></div>
-																		<script type="text/javascript">
-																			{ % if msg %}
-																			alert("Sucessfully logined")
-																			{% end if %}
-																			{% if error %}
-																			alert("Invalid Details")
-																			{% end if %}
-																		</script>
 																		
-																		<div class="new">
+																		
+																		
 																			
 																			<p class="sign">Do not have an account ? <a href="/admin_register/">Sign Up</a></p>
 																			<div class="clearfix"></div>
-																		</div>
+																		
 																	</form>
 														</div>
 
@@ -65,9 +69,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 										  	<!--//login-->
 										    <div class="footer">
-												<div class="error-btn">
+												<!-- <div class="error-btn">
 															<a class="read fourth" href="/admin_index/">Return to Home</a>
-															</div>
+															</div> -->
 										   
 										</div>
 									<!--footer section end-->

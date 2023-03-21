@@ -7,11 +7,11 @@ class contact1_tb(models.Model):
 	phonenumber=models.CharField(max_length=225)
 	message=models.TextField()
 
-class contact_tb(models.Model):
-	name=models.CharField(max_length=225)
-	email=models.CharField(max_length=225)
-	phonenumber=models.CharField(max_length=225)
-	message=models.TextField()
+# class contact_tb(models.Model):
+# 	name=models.CharField(max_length=225)
+# 	email=models.CharField(max_length=225)
+# 	phonenumber=models.CharField(max_length=225)
+# 	message=models.TextField()
 
 class reg_tb(models.Model):
 	email=models.CharField(max_length=225)

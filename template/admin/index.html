@@ -8,10 +8,20 @@
 					<!-- //header-ends -->
 						<div class="outter-wp">
 							
+							     <h1 style="display:flex; justify-content:center; margin-right: 70px;">ADMIN  PANEL</h1>
+							     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                                 <script type="text/javascript">
+							     {% if success %}
+                                 swal("{{success}}", "","success");
+                                 {% elif error %}
+                                 swal("{{error}}","", "error");
+                                 {% endif %}
+                                 </script>
+							
 								<!--custom-widgets-->
 												<div class="custom-widgets" >
 												   <div class="row-one top" style="display:flex; justify-content: center;">
-												   	<h4 style="color:red; text-align: center;">{{success}}</h4>
+												   <!-- 	<h4 style="color:green; text-align: center;">{{success}}</h4> -->
 														<div class="col-md-4 widget">
 
 															<div class="stats-left ">

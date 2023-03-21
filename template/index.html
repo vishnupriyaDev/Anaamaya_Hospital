@@ -1,5 +1,13 @@
 {% extends 'headerfooter.html' %}
     {% block content %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                                 <script type="text/javascript">
+                                 {% if success %}
+                                 swal("{{success}}", "","success");
+                                 {% elif error %}
+                                 swal("{{error}}","", "error");
+                                 {% endif %}
+                                 </script> 
     <!-- End SearchBar -->
     <!-- =====>> End Header-area <<===== 
     =========================== -->
@@ -12,7 +20,7 @@
                 <span class="banner-para"> Ridiculus elit amet sagittis arcu cras ornare, amet a amet urna, vitae cras. Ipsum sociosqu.  </span>
                 <div class="banner-button mt-0 mt-lg-3">
                     <a href="/doctor/" class="btn--custom btn--base btn--capsole"> APPOINMENT </a>
-                    <a href="javascript:void(0)" class="btn--custom btn-outline--base btn--capsole"> LEARN MORE </a>
+                   <!--  <a href="javascript:void(0)" class="btn--custom btn-outline--base btn--capsole"> LEARN MORE </a> -->
                 </div>
             </div>
         </div>
@@ -56,7 +64,7 @@
     </div>
     <!-- =====>> Address Area End <<===== 
     
-    <!-- =====>> Service Area Starts <<===== 
+     =====>> Service Area Starts <<===== 
     =========================== -->
     <section class="service-area bg--section pt-120 pb-120">
         <div class="container">
@@ -81,7 +89,7 @@
 
                         </div>
                         <div class="service-contents">
-                            <h4 class="common-title" style="text-transform: uppercase;"> <a href="#">{{x.department.department}}</a> </h4>
+                            <h4 class="common-title" style="text-transform: uppercase;"> <a href="javascript:void(0)">{{x.department.department}}</a> </h4>
                             <p class="common-para" style="text-transform: uppercase;"> {{x.department.description}} </p>
                         </div>
                     </div>
@@ -94,7 +102,7 @@
              
                
                
- -->
+ 
             </div>
            <br>
            <br>
@@ -131,7 +139,7 @@
                             <img src="{{x.image.url}}" width="148" height="127" alt="">
                         </div>
                         <div class="doctor-contents">
-                            <h4 class="common-title"> <a href="doctor-details.html"> {{x.doctorname}}</a> </h4>
+                            <h4 class="common-title"> <a href="javascript:void(0)"> {{x.doctorname}}</a> </h4>
                             <span class="doctor-title" style="text-transform: uppercase";> {{x.department.department}} </span>
                             <p class="common-para"> {{x.qualification}} </p>
                             
@@ -362,7 +370,23 @@
     </section>
     <!-- =====>> Counter Area End <<===== 
     =========================== -->
+  <script>
+$(document).ready(function(){
+ 
    
+    $("#home1").addClass("cactive");
+  });
+
+</script>
+<script>
+$(document).ready(function(){
+ 
+   
+    $("#home").addClass("active");
+  });
+
+</script>
+
     
     {% endblock %}
 

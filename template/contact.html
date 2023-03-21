@@ -46,6 +46,14 @@
                                 <textarea class="form--control form-control form--message" name="message" placeholder="Write Messages"></textarea>
                             </div>
                             <button type="submit"> SEND MESSAGES </button>
+                            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                                 <script type="text/javascript">
+                                 {% if success %}
+                                 swal("{{success}}", "","success");
+                                 {% elif error %}
+                                 swal("{{error}}","", "error");
+                                 {% endif %}
+                                 </script> 
                         </form>
                     </div>
                 </div>
@@ -105,5 +113,21 @@
     </div>
     <!-- =====>> Contact Map Area End <<===== 
     =========================== -->
+    <script>
+$(document).ready(function(){
+ 
+   
+    $("#contact1").addClass("cactive");
+  });
+
+</script>
+<script>
+$(document).ready(function(){
+ 
+   
+    $("#contact").addClass("active");
+  });
+
+</script>
    
     {% endblock %}
